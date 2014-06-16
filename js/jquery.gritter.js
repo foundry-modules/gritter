@@ -407,11 +407,29 @@
 		* @private
 		*/  
 		_verifyWrapper: function(){
+
+
+			if ($("body > [id=fd].gritter").length < 1) {
+
+				// Create container for #fd.gritter
+				$(document.createElement("div"))
+					.attr("id", "fd")
+					.addClass("gritter")
+					.css({
+						position: "absolute",
+						top: 0,
+						left: 0,
+						overflow: "visible",
+						width: 0,
+						height: 0,
+						zIndex: 10003
+					})
+					.appendTo("body");
+			}
 		  
 			if($('#gritter-notice-wrapper').length == 0){
-				$('body').append(this._tpl_wrap);
+				$("[id=fd].gritter").append(this._tpl_wrap);
 			}
-		
 		}
 		
 	}
